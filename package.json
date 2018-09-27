@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/historic-rates-line-chart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "files": [
@@ -10,7 +10,9 @@
   "scripts": {
     "lint": "eslint src/**/*.js",
     "start": "webpack-dev-server --hot --port 9000 --config webpack.config.dev.js",
-    "build": "NODE_ENV=production webpack -p"
+    "build": "NODE_ENV=production webpack -p",
+    "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
+    "release-to-github": "release-to-github-with-changelog"
   },
   "repository": {
     "type": "git",
@@ -44,6 +46,7 @@
     "pretty-quick": "^1.7.0",
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.11",
+    "release-to-github-with-changelog": "^1.2.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.1",
