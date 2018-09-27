@@ -1,0 +1,44 @@
+{
+    "name": "@transferwise/historic-rates-line-chart",
+    "version": "0.1.0",
+    "description": "",
+    "main": "index.js",
+    "files": [
+        "index.js",
+        "dist/"
+    ],
+    "scripts": {
+        "start": "webpack-dev-server --hot --port 9000 --config webpack.config.dev.js",
+        "build": "webpack -p"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/transferwise/historic-rates-line-chart.git"
+    },
+    "author": "Organic Growth",
+    "license": "ISC",
+    "homepage": "https://github.com/transferwise/historic-rates-line-chart#readme",
+    "devDependencies": {
+        "@babel/core": "^7.1.0",
+        "@babel/plugin-transform-react-jsx": "^7.0.0",
+        "@babel/plugin-transform-runtime": "^7.1.0",
+        "@babel/preset-env": "^7.1.0",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.2",
+        "chart.js": "^2.7.2",
+        "html-webpack-plugin": "^3.2.0",
+        "moment": "^2.22.2",
+        "prop-types": "^15.6.2",
+        "react": "^16.5.2",
+        "react-chartjs-2": "^2.7.4",
+        "react-dom": "^16.5.2",
+        "react-hot-loader": "^4.3.11",
+        "react-redux": "^5.0.7",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.1",
+        "webpack-dev-server": "^3.1.9"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.0.0"
+    }
+}
