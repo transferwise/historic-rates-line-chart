@@ -1,44 +1,57 @@
 {
-    "name": "@transferwise/historic-rates-line-chart",
-    "version": "0.1.0",
-    "description": "",
-    "main": "index.js",
-    "files": [
-        "index.js",
-        "dist/"
-    ],
-    "scripts": {
-        "start": "webpack-dev-server --hot --port 9000 --config webpack.config.dev.js",
-        "build": "webpack -p"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/transferwise/historic-rates-line-chart.git"
-    },
-    "author": "Organic Growth",
-    "license": "ISC",
-    "homepage": "https://github.com/transferwise/historic-rates-line-chart#readme",
-    "devDependencies": {
-        "@babel/core": "^7.1.0",
-        "@babel/plugin-transform-react-jsx": "^7.0.0",
-        "@babel/plugin-transform-runtime": "^7.1.0",
-        "@babel/preset-env": "^7.1.0",
-        "@babel/preset-react": "^7.0.0",
-        "babel-loader": "^8.0.2",
-        "chart.js": "^2.7.2",
-        "html-webpack-plugin": "^3.2.0",
-        "moment": "^2.22.2",
-        "prop-types": "^15.6.2",
-        "react": "^16.5.2",
-        "react-chartjs-2": "^2.7.4",
-        "react-dom": "^16.5.2",
-        "react-hot-loader": "^4.3.11",
-        "react-redux": "^5.0.7",
-        "webpack": "^4.20.2",
-        "webpack-cli": "^3.1.1",
-        "webpack-dev-server": "^3.1.9"
-    },
-    "dependencies": {
-        "@babel/runtime": "^7.0.0"
-    }
+  "name": "@transferwise/historic-rates-line-chart",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "dist/"
+  ],
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "start": "webpack-dev-server --hot --port 9000 --config webpack.config.dev.js",
+    "build": "NODE_ENV=production webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/transferwise/historic-rates-line-chart.git"
+  },
+  "author": "Organic Growth",
+  "license": "ISC",
+  "homepage": "https://github.com/transferwise/historic-rates-line-chart#readme",
+  "peerDependencies": {
+    "react": "^16.5.2",
+    "prop-types": "^15.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.1",
+    "prettier": "1.14.3",
+    "pretty-quick": "^1.7.0",
+    "react-dom": "^16.5.2",
+    "react-hot-loader": "^4.3.11",
+    "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "chart.js": "^2.7.2",
+    "react": "^16.5.2",
+    "react-chartjs-2": "^2.7.4"
+  }
 }

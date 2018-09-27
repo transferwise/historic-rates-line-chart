@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: 'development',
@@ -6,22 +7,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.less$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
-      },
-      {
-        test: /\.(woff|woff2|svg|eot|ttf)/,
-        loader: 'file-loader',
+        use: {
+            loader: 'babel-loader',
+        },
       },
     ],
   },
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: './docs/index.html',
     }),

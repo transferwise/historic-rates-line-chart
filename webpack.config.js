@@ -30,15 +30,6 @@ module.exports = {
                   loader: 'babel-loader',
               },
           },
-          // {
-          //     test: /\.less$/,
-          //     exclude: /node_modules/,
-          //     use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
-          // },
-          // {
-          //     test: /fonts.*\.(woff|woff2|svg|eot|ttf)/,
-          //     use: ['file-loader'],
-          // },
       ],
   },
   externals: {
