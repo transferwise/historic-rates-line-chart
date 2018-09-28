@@ -1,3 +1,6 @@
+# v0.1.2
+## Add configuration options
+
 # v0.1.1
 ## Fix release
 
