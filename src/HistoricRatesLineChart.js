@@ -4,6 +4,53 @@ import Types from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
 const HistoricRatesLineChart = ({ rates, format }) => {
+  const options = {
+    animation: false,
+    maintainAspectRatio: false,
+    legend: {
+      display: false,
+    },
+    tooltips: {
+      enabled: true,
+      mode: 'index',
+      intersect: false,
+      backgroundColor: '#fff',
+      titleFontColor: '#37517e',
+      bodyFontColor: '#37517e',
+      xPadding: 16,
+      yPadding: 8,
+      cornerRadius: 3,
+      displayColors: false,
+    },
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            drawBorder: false,
+            display: false,
+          },
+          ticks: {
+            maxRotation: 0,
+            maxTicksLimit: 4,
+            fontColor: '#fff',
+          },
+        },
+      ],
+      yAxes: [
+        {
+          position: 'right',
+          gridLines: {
+            color: '#37517e',
+            drawBorder: false,
+          },
+          ticks: {
+            fontColor: '#fff',
+          },
+        },
+      ],
+    },
+  };
+
   const data = canvas => {
     const ctx = canvas.getContext('2d');
     const gradient = ctx.createLinearGradient(0.0, 150.0, 300.0, 150.0);
@@ -24,10 +71,9 @@ const HistoricRatesLineChart = ({ rates, format }) => {
           lineTension: 0.3,
           pointRadius: rates.map((_val, x) => (x === rates.length - 1 ? 5 : 0)),
           pointBorderWidth: 2,
-          pointBackgroundColor: '#00b9ff',
           pointBorderColor: '#fff',
-          pointHoverRadius: 5,
-          pointHitRadius: 10,
+          pointBackgroundColor: '#00b9ff',
+          pointHoverRadius: 0,
           data: rates.map(rate => rate.rate),
         },
       ],
@@ -36,7 +82,7 @@ const HistoricRatesLineChart = ({ rates, format }) => {
 
   return (
     <Fragment>
-      <Line data={data} />
+      <Line data={data} options={options} />
     </Fragment>
   );
 };
@@ -51,6 +97,7 @@ HistoricRatesLineChart.propTypes = {
     }),
   ).isRequired,
   format: Types.string.isRequired,
+  options: Types.object,
 };
 
 export default HistoricRatesLineChart;
