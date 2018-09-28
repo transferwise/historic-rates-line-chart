@@ -1,7 +1,11 @@
 import Moment from 'moment';
 import React, { Fragment } from 'react';
 import Types from 'prop-types';
-import { Line } from 'react-chartjs-2';
+import { defaults, Line } from 'react-chartjs-2';
+
+defaults.global.defaultFontColor = '#fff';
+defaults.global.defaultFontFamily = "'Averta', 'Avenir W02', 'Avenir', Helvetica, Arial, sans-serif";
+defaults.global.defaultFontSize = 14;
 
 const HistoricRatesLineChart = ({ rates, format }) => {
   const options = {
@@ -32,7 +36,6 @@ const HistoricRatesLineChart = ({ rates, format }) => {
           ticks: {
             maxRotation: 0,
             maxTicksLimit: 4,
-            fontColor: '#fff',
           },
         },
       ],
@@ -43,29 +46,17 @@ const HistoricRatesLineChart = ({ rates, format }) => {
             color: '#37517e',
             drawBorder: false,
           },
-          ticks: {
-            fontColor: '#fff',
-          },
         },
       ],
     },
   };
 
-  const data = canvas => {
-    const ctx = canvas.getContext('2d');
-    const gradient = ctx.createLinearGradient(0.0, 150.0, 300.0, 150.0);
-    gradient.addColorStop(0.002, 'rgba(0, 185, 255, 1.000)');
-    gradient.addColorStop(0.204, 'rgba(13, 189, 226, 1.000)');
-    gradient.addColorStop(0.492, 'rgba(30, 195, 191, 1.000)');
-    gradient.addColorStop(0.695, 'rgba(30, 195, 191, 1.000)');
-    gradient.addColorStop(0.897, 'rgba(69, 210, 108, 1.000)');
-    gradient.addColorStop(1.0, 'rgba(88, 217, 67, 1.000)');
-
+  const data = () => {
     return {
       labels: rates.map(rate => Moment(rate.time).format(format)),
       datasets: [
         {
-          borderColor: gradient,
+          borderColor: '#2ed06e',
           borderWidth: 3,
           fill: false,
           lineTension: 0.3,
