@@ -1,3 +1,6 @@
+# v0.1.4
+## Add tooltip
+
 # v0.1.3
 ## Add defaults for font-color, font-family, font-size
 
