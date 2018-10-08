@@ -4,10 +4,11 @@ import Types from 'prop-types';
 import { defaults, Line } from 'react-chartjs-2';
 
 defaults.global.defaultFontColor = '#fff';
-defaults.global.defaultFontFamily = "'Averta', 'Avenir W02', 'Avenir', Helvetica, Arial, sans-serif";
+defaults.global.defaultFontFamily =
+  "'Averta', 'Avenir W02', 'Avenir', Helvetica, Arial, sans-serif";
 defaults.global.defaultFontSize = 14;
 
-const HistoricRatesLineChart = ({ rates, format }) => {
+const HistoricRatesLineChart = ({ format, rates, source, target }) => {
   const options = {
     animation: false,
     maintainAspectRatio: false,
@@ -25,6 +26,11 @@ const HistoricRatesLineChart = ({ rates, format }) => {
       yPadding: 8,
       cornerRadius: 3,
       displayColors: false,
+      callbacks: {
+        label: tooltipItem => {
+          return `1 ${source} → ${tooltipItem.yLabel} ${target}`;
+        },
+      },
     },
     scales: {
       xAxes: [
@@ -43,7 +49,7 @@ const HistoricRatesLineChart = ({ rates, format }) => {
         {
           position: 'right',
           gridLines: {
-            color: '#37517e',
+            color: '#4b628b',
             drawBorder: false,
           },
         },
@@ -64,7 +70,7 @@ const HistoricRatesLineChart = ({ rates, format }) => {
           pointBorderWidth: 2,
           pointBorderColor: '#fff',
           pointBackgroundColor: '#00b9ff',
-          pointHoverRadius: 0,
+          pointHoverRadius: 5,
           data: rates.map(rate => rate.rate),
         },
       ],
@@ -88,6 +94,8 @@ HistoricRatesLineChart.propTypes = {
     }),
   ).isRequired,
   format: Types.string.isRequired,
+  source: Types.string.isRequired,
+  target: Types.string.isRequired,
   options: Types.object,
 };
 
