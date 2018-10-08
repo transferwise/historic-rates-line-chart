@@ -5,24 +5,10 @@ import HistoricRatesLineChart from '../src';
 import rates from './rates.json';
 
 class Docs extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-    };
-  }
-
-  createStateLink(name) {
-    return value => this.setState({ [name]: value });
-  }
-
   render() {
     return (
       <div>
-        <HistoricRatesLineChart
-          rates={rates || []}
-          format="MMM D"
-        />
+        <HistoricRatesLineChart format="MMM D" rates={rates || []} source="GBP" target="EUR" />
       </div>
     );
   }

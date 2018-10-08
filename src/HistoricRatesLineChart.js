@@ -8,7 +8,7 @@ defaults.global.defaultFontFamily =
   "'Averta', 'Avenir W02', 'Avenir', Helvetica, Arial, sans-serif";
 defaults.global.defaultFontSize = 14;
 
-const HistoricRatesLineChart = ({ rates, format }) => {
+const HistoricRatesLineChart = ({ format, rates, source, target }) => {
   const options = {
     animation: false,
     maintainAspectRatio: false,
@@ -28,7 +28,7 @@ const HistoricRatesLineChart = ({ rates, format }) => {
       displayColors: false,
       callbacks: {
         label: tooltipItem => {
-          return `1 ${window.config.source} → ${tooltipItem.yLabel} ${window.config.target}`;
+          return `1 ${source} → ${tooltipItem.yLabel} ${target}`;
         },
       },
     },
@@ -94,6 +94,8 @@ HistoricRatesLineChart.propTypes = {
     }),
   ).isRequired,
   format: Types.string.isRequired,
+  source: Types.string.isRequired,
+  target: Types.string.isRequired,
   options: Types.object,
 };
 
