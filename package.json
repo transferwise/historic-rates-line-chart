@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/historic-rates-line-chart",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "main": "index.js",
   "files": [
@@ -11,8 +11,11 @@
     "lint": "eslint src/**/*.js",
     "start": "webpack-dev-server --hot --port 9000 --config webpack.config.dev.js",
     "build": "NODE_ENV=production webpack -p",
+    "build-docs": "webpack -p --config webpack.config.docs.js",
+    "deploy-docs-to-dir": "gh-pages -a -d public -e",
     "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
-    "release-to-github": "release-to-github-with-changelog"
+    "release-to-github": "release-to-github-with-changelog",
+    "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages"
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.2",
+    "deploy-directory-on-branch-to-gh-pages": "^0.2.4",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",

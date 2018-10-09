@@ -1,3 +1,6 @@
+# v0.1.6
+## Set timezone to UTC
+
 # v0.1.5
 ## Remove unused deps
 

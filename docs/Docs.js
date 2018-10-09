@@ -8,7 +8,12 @@ class Docs extends Component {
   render() {
     return (
       <div>
-        <HistoricRatesLineChart format="MMM D" rates={rates || []} source="GBP" target="EUR" />
+        <HistoricRatesLineChart
+          format="MMM D"
+          rates={rates.reverse() || []}
+          source="GBP"
+          target="EUR"
+        />
       </div>
     );
   }
