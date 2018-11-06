@@ -8,8 +8,8 @@ defaults.global.defaultFontFamily =
   "'Averta', 'Avenir W02', 'Avenir', Helvetica, Arial, sans-serif";
 defaults.global.defaultFontSize = 14;
 
-const HistoricRatesLineChart = ({ format, rates, source, target }) => {
-  const options = {
+const HistoricRatesLineChart = ({ format, datasets, source, target, options }) => {
+  const defaultOptions = {
     animation: false,
     maintainAspectRatio: false,
     legend: {
@@ -27,9 +27,7 @@ const HistoricRatesLineChart = ({ format, rates, source, target }) => {
       cornerRadius: 3,
       displayColors: false,
       callbacks: {
-        label: tooltipItem => {
-          return `1 ${source} → ${tooltipItem.yLabel} ${target}`;
-        },
+        label: tooltipItem => `1 ${source} → ${tooltipItem.yLabel} ${target}`,
       },
     },
     scales: {
@@ -56,43 +54,63 @@ const HistoricRatesLineChart = ({ format, rates, source, target }) => {
       ],
     },
   };
+  const mergedOptions = { ...defaultOptions, ...options };
 
   const data = () => {
+    const defaultDatasetOptions = {
+      borderColor: '#2ed06e',
+      borderWidth: 3,
+      fill: false,
+      lineTension: 0.3,
+      pointBorderWidth: 2,
+      pointBorderColor: '#fff',
+      pointBackgroundColor: '#00b9ff',
+      pointHoverRadius: 5,
+    };
+
+    const configuredDatasets = datasets.map((dataset, index) => {
+      const ratesData = dataset.rates.map(x => x.rate);
+      const pointRadius = dataset.rates.map((_val, x) => (x === dataset.rates.length - 1 ? 5 : 0));
+      const label =
+        dataset.options && dataset.options.label ? dataset.options.label : `series-${index}`;
+
+      return {
+        ...defaultDatasetOptions,
+        ...dataset.options,
+        label,
+        data: ratesData,
+        pointRadius,
+      };
+    });
+
     return {
-      labels: rates.map(rate => Moment(rate.time).format(format)),
-      datasets: [
-        {
-          borderColor: '#2ed06e',
-          borderWidth: 3,
-          fill: false,
-          lineTension: 0.3,
-          pointRadius: rates.map((_val, x) => (x === rates.length - 1 ? 5 : 0)),
-          pointBorderWidth: 2,
-          pointBorderColor: '#fff',
-          pointBackgroundColor: '#00b9ff',
-          pointHoverRadius: 5,
-          data: rates.map(rate => rate.rate),
-        },
-      ],
+      labels: datasets[0].rates.map(rate => Moment(rate.time).format(format)),
+      datasets: configuredDatasets,
     };
   };
 
   return (
     <Fragment>
-      <Line data={data} options={options} />
+      <Line data={data} options={mergedOptions} />
     </Fragment>
   );
 };
 
 HistoricRatesLineChart.propTypes = {
-  rates: Types.arrayOf(
+  datasets: Types.arrayOf(
     Types.shape({
-      rate: Types.number.isRequired,
-      source: Types.string.isRequired,
-      target: Types.string.isRequired,
-      time: Types.string.isRequired,
+      rates: Types.arrayOf(
+        Types.shape({
+          rate: Types.number.isRequired,
+          source: Types.string.isRequired,
+          target: Types.string.isRequired,
+          time: Types.string.isRequired,
+        }),
+      ).isRequired,
+      options: Types.object,
     }),
   ).isRequired,
+
   format: Types.string.isRequired,
   source: Types.string.isRequired,
   target: Types.string.isRequired,
