@@ -1,3 +1,6 @@
+# v1.0.1
+## Add the option to provide and display multiple datasets
+
 # v0.1.6
 ## Set timezone to UTC
 
