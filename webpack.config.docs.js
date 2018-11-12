@@ -7,7 +7,7 @@ module.exports = {
   mode: 'production',
   entry: devConfig.entry,
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'docs-build'),
     filename: 'historic-rates-line-chart.js',
   },
   module: devConfig.module,
