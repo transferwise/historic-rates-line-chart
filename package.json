@@ -1,0 +1,64 @@
+{
+  "name": "@transferwise/historic-rates-line-chart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "dist/"
+  ],
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "start": "webpack-dev-server --hot --port 9000 --config webpack.config.dev.js",
+    "build": "NODE_ENV=production webpack -p",
+    "build-docs": "webpack -p --config webpack.config.docs.js",
+    "deploy-docs": "gh-pages -a -d docs-build",
+    "check-release-to-github": "release-to-github-with-changelog-pre-release-checks",
+    "release-to-github": "release-to-github-with-changelog",
+    "deploy-docs-for-branch": "deploy-directory-on-branch-to-gh-pages -d docs-build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/transferwise/historic-rates-line-chart.git"
+  },
+  "author": "Organic Growth",
+  "license": "ISC",
+  "homepage": "https://github.com/transferwise/historic-rates-line-chart#readme",
+  "peerDependencies": {
+    "react": "^16.5.2",
+    "prop-types": "^15.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.2",
+    "deploy-directory-on-branch-to-gh-pages": "^0.2.5",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.1",
+    "prettier": "1.14.3",
+    "pretty-quick": "^1.7.0",
+    "react-dom": "^16.5.2",
+    "react-hot-loader": "^4.3.11",
+    "release-to-github-with-changelog": "^1.2.0",
+    "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "chart.js": "^2.7.2",
+    "moment": "^2.22.2",
+    "react": "^16.5.2",
+    "react-chartjs-2": "^2.7.4"
+  }
+}
