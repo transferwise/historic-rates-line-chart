@@ -78,6 +78,7 @@ workflows:
     jobs:
       - build
       - deploy-docs-to-root:
+          context: frontend-publish
           requires:
             - build
           filters:
