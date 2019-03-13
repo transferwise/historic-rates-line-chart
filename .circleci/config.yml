@@ -77,13 +77,13 @@ workflows:
   build-and-release:
     jobs:
       - build
-      # - deploy-docs-to-root:
-      #     context: frontend-publish
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         only: master
+      - deploy-docs-to-root:
+          context: frontend-publish
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
       - deploy-docs-for-branch:
           requires:
             - build
@@ -94,7 +94,7 @@ workflows:
       - release:
           context: frontend-publish
           requires:
-            # - deploy-docs-to-root
+            - deploy-docs-to-root
             - build
           filters:
             branches:
