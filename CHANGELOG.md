@@ -1,3 +1,6 @@
+# v1.0.3
+## Fix release step
+
 # v1.0.2
 ## Bump dependencies
 
